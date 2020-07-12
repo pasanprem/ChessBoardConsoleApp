@@ -46,14 +46,22 @@ namespace ChessBoardModel
             switch(chessPiece)
             {
                 case "Knight":
-                    theGrid[currentCell.RowNumber + 2, currentCell.ColumnNumber + 1].LegalNextMove = true;
-                    theGrid[currentCell.RowNumber + 2, currentCell.ColumnNumber - 1].LegalNextMove = true;
-                    theGrid[currentCell.RowNumber - 2, currentCell.ColumnNumber + 1].LegalNextMove = true;
-                    theGrid[currentCell.RowNumber - 2, currentCell.ColumnNumber - 1].LegalNextMove = true;
-                    theGrid[currentCell.RowNumber + 1, currentCell.ColumnNumber + 2].LegalNextMove = true;
-                    theGrid[currentCell.RowNumber + 1, currentCell.ColumnNumber - 2].LegalNextMove = true;
-                    theGrid[currentCell.RowNumber - 1, currentCell.ColumnNumber + 2].LegalNextMove = true;
-                    theGrid[currentCell.RowNumber - 1, currentCell.ColumnNumber - 2].LegalNextMove = true;
+                    if(isSafe(currentCell.RowNumber + 2, currentCell.ColumnNumber + 1))
+                        theGrid[currentCell.RowNumber + 2, currentCell.ColumnNumber + 1].LegalNextMove = true;
+                    if(isSafe(currentCell.RowNumber + 2, currentCell.ColumnNumber - 1))
+                        theGrid[currentCell.RowNumber + 2, currentCell.ColumnNumber - 1].LegalNextMove = true;
+                    if(isSafe(currentCell.RowNumber - 2, currentCell.ColumnNumber + 1))
+                        theGrid[currentCell.RowNumber - 2, currentCell.ColumnNumber + 1].LegalNextMove = true;
+                    if(isSafe(currentCell.RowNumber - 2, currentCell.ColumnNumber - 1))
+                        theGrid[currentCell.RowNumber - 2, currentCell.ColumnNumber - 1].LegalNextMove = true;
+                    if(isSafe(currentCell.RowNumber + 1, currentCell.ColumnNumber + 2))
+                        theGrid[currentCell.RowNumber + 1, currentCell.ColumnNumber + 2].LegalNextMove = true;
+                    if(isSafe(currentCell.RowNumber + 1, currentCell.ColumnNumber - 2))
+                        theGrid[currentCell.RowNumber + 1, currentCell.ColumnNumber - 2].LegalNextMove = true;
+                    if(isSafe(currentCell.RowNumber - 1, currentCell.ColumnNumber + 2))
+                        theGrid[currentCell.RowNumber - 1, currentCell.ColumnNumber + 2].LegalNextMove = true;
+                    if(isSafe(currentCell.RowNumber - 1, currentCell.ColumnNumber - 2))
+                        theGrid[currentCell.RowNumber - 1, currentCell.ColumnNumber - 2].LegalNextMove = true;
                     break;
 
                 case "King":
@@ -74,7 +82,23 @@ namespace ChessBoardModel
 
 
             }
+            theGrid[currentCell.RowNumber, currentCell.ColumnNumber].CurrentlyOccupied = true;
+        }
 
+        private bool isSafe(int rownum, int colnum)
+        {
+            if(0 <= rownum && rownum < Size)
+            {
+                if(0 <= colnum && colnum < Size)
+                {
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                return false;
+            }
         }
     }    
 }
