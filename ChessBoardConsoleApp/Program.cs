@@ -34,12 +34,60 @@ namespace ChessBoardConsoleApp
 
         private static Cell setCurrentCell()
         {
+            int currentRow, currentColumn;
             //get x and y coordinates from user then return cell location
-            Console.WriteLine("Enter the current row number: ");
-            int currentRow = int.Parse(Console.ReadLine());
+            while(true)
+            {
+                try
+                {
+                    Console.WriteLine("Enter the current row number (0-7): ");
+                    try
+                    {
+                        currentRow = int.Parse(Console.ReadLine());
+                    }
+                    catch (Exception)
+                    {
+                        continue;                        
+                    }
+                    
+                    if (0 <= currentRow && currentRow < 8)
+                        break;
+                    else
+                        continue;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Invalid input: " + e.Message);
+                    continue;
+                }
+            }
+            
+            while(true)
+            {
+                try
+                {
+                    Console.WriteLine("Enter the current column number (0-7): ");
+                    try
+                    {
+                        currentColumn = int.Parse(Console.ReadLine());
+                    }
+                    catch (Exception)
+                    {
+                        continue;
+                    }
+                    if (0 <= currentColumn && currentColumn < 8)
+                        break;
+                    else
+                        continue;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Invalid input: " + e.Message);
+                    continue;
+                }
+            }
 
-            Console.WriteLine("Enter the current column number: ");
-            int currentColumn = int.Parse(Console.ReadLine());
+            
 
             return myBoard.theGrid[currentRow, currentColumn];
         }
