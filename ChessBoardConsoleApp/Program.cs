@@ -23,7 +23,7 @@ namespace ChessBoardConsoleApp
 
 
             //calculate all legal moves 
-            myBoard.MarkNextLegalMoves(currentCell, "Knight");
+            myBoard.MarkNextLegalMoves(currentCell, "Queen");
 
             //print the chess board. x for occupied piece. + for legal move. . for empty
             printBoard(myBoard);
