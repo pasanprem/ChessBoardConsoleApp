@@ -97,9 +97,11 @@ namespace ChessBoardConsoleApp
             //print the chess board to console.X for piecce location,. +  for legal moves
             for (int i = 0; i < myBoard.Size; i++)
             {
+                Console.WriteLine("+---+---+---+---+---+---+---+---+");
                 for (int j = 0; j < myBoard.Size; j++)
                 {
                     Cell c = myBoard.theGrid[i, j];
+                    Console.Write("| ");
 
                     if (c.CurrentlyOccupied == true)
                     {
@@ -113,11 +115,13 @@ namespace ChessBoardConsoleApp
                     {
                         Console.Write(".");
                     }
+                    Console.Write(" ");
                 }
+                Console.Write("|");
                 Console.WriteLine();
             }
 
-            Console.WriteLine("========");
+            Console.WriteLine("+---+---+---+---+---+---+---+---+");
         }
     }
 }
